@@ -11,7 +11,6 @@
     CAShapeLayer *_border;
     BOOL _loaded;
     EAGLContext *_context;
-    UILabel *titleLabel;
 }
 
 @synthesize sign;
@@ -44,15 +43,6 @@
                      context: _context];
         
         [self addSubview:sign];
-        
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, sign.bounds.size.width - 40, 24)];
-        [titleLabel setCenter:CGPointMake(sign.bounds.size.width/2, sign.bounds.size.height - 30)];
-        [titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
-        [titleLabel setLineBreakMode:NSLineBreakByClipping];
-        [titleLabel setTextAlignment: NSTextAlignmentLeft];
-        [titleLabel setTextColor:[UIColor colorWithRed:200/255.f green:200/255.f blue:200/255.f alpha:1.f]];
-        //[titleLabel setBackgroundColor:[UIColor greenColor]];
-        [sign addSubview:titleLabel];
         
         //Save button
         UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
