@@ -22,6 +22,21 @@
 @synthesize sign;
 @synthesize manager;
 
+- (instancetype)init
+{
+	_showNativeButtons = YES;
+	if ((self = [super init])) {
+		_border = [CAShapeLayer layer];
+		_border.strokeColor = [UIColor blackColor].CGColor;
+		_border.fillColor = nil;
+		_border.lineDashPattern = @[@4, @2];
+
+		[self.layer addSublayer:_border];
+	}
+
+	return self;
+}
+
 - (void) didRotate:(NSNotification *)notification {
 	int ori=1;
 	UIDeviceOrientation currOri = [[UIDevice currentDevice] orientation];
@@ -51,10 +66,10 @@
 
 		if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
 
-			titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, sign.bounds.size.width - 40, 24)];
-			[titleLabel setCenter:CGPointMake(sign.bounds.size.width/2, sign.bounds.size.height - 30)];
+			titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 24)];
+			[titleLabel setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 30)];
 
-			[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
+			[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
 			[titleLabel setLineBreakMode:NSLineBreakByClipping];
 			[titleLabel setTextAlignment: NSTextAlignmentCenter];
 			[titleLabel setTextColor:[UIColor colorWithRed:200/255.f green:200/255.f blue:200/255.f alpha:1.f]];
@@ -83,9 +98,8 @@
 				[clearButton setLineBreakMode:NSLineBreakByClipping];
 				[clearButton addTarget:self action:@selector(onClearButtonPressed)
 				             forControlEvents:UIControlEventTouchUpInside];
-                [clearButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 				[clearButton setTitle:@"Reset" forState:UIControlStateNormal];
-
+                [clearButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 				clearButton.frame = CGRectMake(0, 0, buttonSize.width, buttonSize.height);
 				[clearButton setBackgroundColor:[UIColor clearColor]];
 				[sign addSubview:clearButton];
@@ -93,10 +107,10 @@
 		}
 		else {
 
-			titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.height - 80, 24)];
-			[titleLabel setCenter:CGPointMake(40, self.bounds.size.height/2)];
-			[titleLabel setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
-			[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
+            titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 24)];
+            [titleLabel setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 30)];
+            [titleLabel setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90))];
+            [titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
 			[titleLabel setLineBreakMode:NSLineBreakByClipping];
 			[titleLabel setTextAlignment: NSTextAlignmentLeft];
 			[titleLabel setTextColor:[UIColor colorWithRed:200/255.f green:200/255.f blue:200/255.f alpha:1.f]];
