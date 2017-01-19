@@ -52,7 +52,7 @@
 		if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
 
 			titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, sign.bounds.size.width - 40, 24)];
-			[titleLabel setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 30)];
+			[titleLabel setCenter:CGPointMake(sign.bounds.size.width/2, sign.bounds.size.height - 30)];
 
 			[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
 			[titleLabel setLineBreakMode:NSLineBreakByClipping];
